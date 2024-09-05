@@ -1,4 +1,4 @@
-#include "Utils.h"
+#include "utils.h"
 #include <sstream>
 
 void split_string(const string& str, vector<string>& tokens, const string& delimiters) {
@@ -10,4 +10,8 @@ void split_string(const string& str, vector<string>& tokens, const string& delim
         lastPos = str.find_first_not_of(delimiters, pos);
         pos = str.find_first_of(delimiters, lastPos);
     }
+}
+
+void clear_screen() {
+    system("clear");  // Em Windows, use "cls"
 }

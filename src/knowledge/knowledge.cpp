@@ -25,6 +25,7 @@ bool KnowledgeBase::existe_fato(const string& fato) {
 }
 
 void KnowledgeBase::editor_de_base_de_conhecimento() {
+    clear_screen();
     int escolha;
     string fato, consequente;
     int num_antecedentes;
@@ -40,20 +41,24 @@ void KnowledgeBase::editor_de_base_de_conhecimento() {
 
         switch (escolha) {
             case 1:
+                clear_screen();
                 cout << "Digite o fato a ser adicionado: ";
                 cin >> fato;
                 adicionar_fato(fato);
                 break;
             case 2:
+                clear_screen();
                 cout << "Digite o consequente da regra: ";
                 cin >> consequente;
                 cout << "Quantos antecedentes? ";
                 cin >> num_antecedentes;
                 antecedentes.resize(num_antecedentes);
+                
                 for (int i = 0; i < num_antecedentes; i++) {
                     cout << "Digite o antecedente " << i + 1 << ": ";
                     cin >> antecedentes[i];
                 }
+                cout << endl;
                 adicionar_regra(consequente, antecedentes);
                 break;
             case 3:

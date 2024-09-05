@@ -1,10 +1,8 @@
 #ifndef KNOWLEDGE_BASE_H
 #define KNOWLEDGE_BASE_H
 
-#include <string>
-#include <vector>
-#include <unordered_map>
-#include <unordered_set>
+#include <bits/stdc++.h>
+#include "../utils/utils.h"
 
 using namespace std;
 
@@ -19,6 +17,12 @@ public:
     vector<string> Antecedentes(const string& hipotese);
     bool existe_fato(const string& fato);
     void editor_de_base_de_conhecimento();
+    void exibir_fatos();
+    void exibir_regras();
+
+    const unordered_map<string, vector<string>>& getRegras() const {
+        return regras;
+    }
 };
 
 #endif

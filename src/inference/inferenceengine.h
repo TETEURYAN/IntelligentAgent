@@ -1,7 +1,7 @@
 #ifndef INFERENCEENGINE_H
 #define INFERENCEENGINE_H
 
-#include "knowledge/knowledgebase.h"
+#include "../knowledge/knowledgebase.h"
 #include <stack>
 
 class InferenceEngine {

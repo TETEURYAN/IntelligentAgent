@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall
-TARGET = knowledge_agent_system
+TARGET = app.bin
 
 SRCDIR = src
 BUILDDIR = build
@@ -11,7 +11,14 @@ SOURCES = $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS = $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 DEPS = $(OBJECTS:.o=.d)
 
-# Regra principal
+# Regra principal: compilar, executar e limpar
+all: $(TARGET)
+	@echo "Executando o programa..."
+	$(TARGETDIR)/$(TARGET)
+	@echo "Limpando arquivos compilados..."
+	$(MAKE) clean
+
+# Regra para compilar o programa
 $(TARGET): $(OBJECTS)
 	@mkdir -p $(TARGETDIR)
 	$(CXX) $(CXXFLAGS) -o $(TARGETDIR)/$(TARGET) $^
@@ -21,11 +28,11 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(dir $@)  # Garante que os diretórios de destino existem
 	$(CXX) $(CXXFLAGS) -MMD -c -o $@ $<
 
-# Limpeza
+# Limpeza dos arquivos compilados
 clean:
 	@rm -rf $(BUILDDIR) $(TARGETDIR)
 
 # Inclui arquivos de dependência
 -include $(DEPS)
 
-.PHONY: clean
+.PHONY: clean all

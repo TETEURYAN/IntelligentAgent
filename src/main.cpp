@@ -1,6 +1,7 @@
 #include "knowledge/knowledgebase.h"
 #include "inference/inferenceengine.h"
 #include "explanation/explanation.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -13,6 +14,8 @@ int main() {
     string sentenca_inicial;
 
     do {
+        clear_screen(); 
+
         cout << "\nMenu Principal:\n";
         cout << "1. Editor de Base de Conhecimento\n";
         cout << "2. Inferência\n";
@@ -23,27 +26,40 @@ int main() {
 
         switch (modo) {
             case 1:
+                clear_screen();
                 kb.editor_de_base_de_conhecimento();
                 break;
             case 2: {
+                clear_screen();
                 int tipo_inferencia;
                 cout << "Escolha o modo de inferência:\n";
                 cout << "1. Encadeamento para trás\n";
                 cout << "2. Encadeamento para frente\n";
-                cout << "3. Encadeamento misto\n";
+                cout << "3. Encadeamento misto\n\n";
+                cout << "Digite o tipo de inferência: ";
                 cin >> tipo_inferencia;
 
+                cout << endl << endl;
                 cout << "Digite a sentença inicial a ser provada: ";
                 cin >> sentenca_inicial;
 
                 if (ie.inferir(sentenca_inicial, tipo_inferencia)) {
                     cout << sentenca_inicial << " é verdade" << endl;
+                    cout << endl << endl;
+
+                    cout << "Aperte uma tecla para continuar . . . ." << endl;
+                    getchar();
+                    getchar();
                 } else {
                     cout << sentenca_inicial << " não pode ser provada" << endl;
+                    cout << "Aperte uma tecla para continuar . . . ." << endl;
+                    getchar();
+                    getchar();
                 }
                 break;
             }
             case 3: {
+                clear_screen();
                 int tipo_explicacao;
                 cout << "Escolha o tipo de explanação:\n";
                 cout << "1. Por quê?\n";
@@ -57,9 +73,11 @@ int main() {
                 break;
             }
             case 4:
+                clear_screen();
                 cout << "Saindo..." << endl;
                 break;
             default:
+                clear_screen();
                 cout << "Opção inválida!" << endl;
                 break;
         }
